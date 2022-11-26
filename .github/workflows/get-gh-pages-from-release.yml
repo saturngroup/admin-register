@@ -21,8 +21,16 @@ jobs:
 
       - run: |
           ls -als
-          tar wxvf admin-register-pages .
+          tar xzvf admin-register-pages .
           rm admin-register-pages
           ls -als
+
+      - run: |
+          git add .
+          git commit -m "Updating pages"
+          git config --global user.email "${{ github.actor }}@runner.org"
+          git config --global user.name "${{ github.actor }}"
+          git push
+
 
     
