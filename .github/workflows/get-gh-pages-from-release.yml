@@ -1,0 +1,25 @@
+name: Expose the Admin Register pages
+on:
+  repository_dispatch:
+    types: 
+      - deploy
+
+  workflow_dispatch:
+    
+
+jobs:
+  get-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: robinraju/release-downloader@v1.6
+        with: 
+          repository: "saturngroup/solution-monorepo"
+          fileName: "admin-register-pages"
+          latest: true
+          token: "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"
+
+      - run: |
+          ls -als
+
+    
