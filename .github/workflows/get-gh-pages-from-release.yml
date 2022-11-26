@@ -17,7 +17,7 @@ jobs:
           repository: "saturngroup/solution-monorepo"
           fileName: "admin-register-pages"
           latest: true
-          token: "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"
+          token: "${{ secrets.DOWNLOAD_TOKEN }}"
 
       - run: |
           ls -als
