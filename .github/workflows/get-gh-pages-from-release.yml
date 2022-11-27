@@ -2,7 +2,7 @@ name: Expose the Admin Register pages
 on:
   repository_dispatch:
     types: 
-      - deploy
+      - deploy-release
 
   workflow_dispatch:
     
@@ -19,13 +19,13 @@ jobs:
           latest: true
           token: "${{ secrets.DOWNLOAD_TOKEN }}"
 
-      - run: |
-          ls -als
+      - name: Extract the files in situ
+        run: |
           tar xzvf admin-register-pages .
           rm admin-register-pages
-          ls -als
 
-      - run: |
+      - name: Commit and push new version in the current branch
+        run: |
           git add .
           git config --global user.email "${{ github.actor }}@runner.org"
           git config --global user.name "${{ github.actor }}"
